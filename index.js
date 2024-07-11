@@ -24,9 +24,7 @@ app.use(cookieParser())
 
 app.use(cors({
     credentials : true,
-    origin : "*",
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    allowedHeaders: 'Origin,X-Requested-With,Content-Type,Accept,Authorization',
+    origin : "http://localhost:4003",
 }))
 
 app.use('/uploads',express.static(__dirname+'/uploads'))
