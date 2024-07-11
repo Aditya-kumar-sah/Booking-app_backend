@@ -24,7 +24,7 @@ app.use(cookieParser())
 
 app.use(cors({
     credentials : true,
-    origin : "https://booking-frontend-six.vercel.app",
+    origin : "https://booking-frontend-six.vercel.app/",
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     allowedHeaders: 'Origin,X-Requested-With,Content-Type,Accept,Authorization',
 }))
