@@ -17,11 +17,6 @@ require('dotenv').config()
 const app = express()
 
 
-
-app.use(express.json())
-app.use(cookieParser())
-
-
 app.use(cors({
     credentials : true,
     origin : "https://booking-frontend-pi.vercel.app",
@@ -35,6 +30,11 @@ app.use((req, res, next) => {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
     next();
 });
+
+
+app.use(express.json())
+app.use(cookieParser())
+
 
 app.use('/uploads',express.static(__dirname+'/uploads'))
 
