@@ -24,7 +24,7 @@ app.use(cookieParser())
 
 app.use(cors({
     credentials : true,
-    origin : "http://localhost:4003",
+    origin : "https://booking-frontend-pi.vercel.app",
 }))
 
 app.use('/uploads',express.static(__dirname+'/uploads'))
