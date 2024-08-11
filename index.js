@@ -153,7 +153,7 @@ app.get('/userplaces',async (req,res) => {
     const decodedToken = jwt.verify(token,secret)
     const user = await PlaceModel.findById(decodedToken?._id)
     if(!user){
-        return res.json(message:"Failed")
+        return res.json({message:"Failed"})
     }
     res.json(user);
 })
