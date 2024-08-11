@@ -148,7 +148,7 @@ app.post('/places',(req,res)=>{
     })
     
 
-app.get('/userplaces',(req,res) => {
+app.get('/userplaces',async (req,res) => {
     const {token} = req.cookies
     const decodedToken = jwt.verify(token,secret)
     const user = await PlaceModel.findById(decodedToken?._id)
