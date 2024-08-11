@@ -9,7 +9,7 @@ const imageDownloader = require('image-downloader');
 const bcryptSalt = bcryptjs.genSaltSync(10)
 const secret = 'sfdfddvsfdsfsdsafgfgf'
 const fs = require('fs')
-const Place = require('./models/Place')
+const PlaceModel = require('./models/Place')
 const BookingModel = require('./models/Booking')
 
 require('dotenv').config()
@@ -152,13 +152,13 @@ app.get('/userplaces',(req,res) => {
     const {token} = req.cookies
     jwt.verify(token,secret,{}, async (err,userData) => {
                  const {id} = userData;
-                 res.json(await Place.find({owner:id}))
+                 res.json(await PlaceModel.find({owner:id}))
     })
 })
 
 app.get('/places/:id',async (req,res) => {
     const {id} = req.params;
-    res.json(await Place.findById(id))
+    res.json(await PlaceModel.findById(id))
 })
 
 app.put('/places',async (req,res) => {
@@ -166,7 +166,7 @@ app.put('/places',async (req,res) => {
     const {id, title,address,addedPhotos, description, perks, extraInfo, checkIn, checkOut, maxGuests,price} = req.body;
 
     jwt.verify(token,secret,{}, async (err,userData) => {   
-         const placeDoc = await Place.findById(id);
+         const placeDoc = await PlaceModel.findById(id);
          if(userData.id === placeDoc.owner.toString()){
               placeDoc.set({
                 title,
@@ -188,7 +188,7 @@ app.put('/places',async (req,res) => {
 })
 
 app.get('/places',async (req,res)=>{
-    res.json(await Place.find());
+    res.json(await PlaceModel.find());
 })
 
 app.post('/bookings',  async (req,res)=>{
