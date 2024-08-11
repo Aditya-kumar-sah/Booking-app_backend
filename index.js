@@ -150,10 +150,12 @@ app.post('/places',(req,res)=>{
 
 app.get('/userplaces',(req,res) => {
     const {token} = req.cookies
-    jwt.verify(token,secret,{}, async (err,userData) => {
-                 const {id} = userData;
-                 res.json(await PlaceModel.find({owner:id}))
-    })
+    const decodedToken = jwt.verify(token,secret)
+    const user = await PlaceModel.findById(decodedToken?._id)
+    if(!user){
+        return res.json(message:"Failed")
+    }
+    res.json(user);
 })
 
 app.get('/places/:id',async (req,res) => {
