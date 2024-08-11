@@ -18,7 +18,7 @@ const app = express()
 
 
 app.use(cors({
-    origin:"https://booking-frontend-jcn2h4eie-aditya-sahs-projects.vercel.app",
+    origin:"https://booking-frontend-pi.vercel.app",
     credentials:true
 })) 
 
